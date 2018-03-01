@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorTitles">#fe9e20</color>
+    <color name="colorText">#4183bd</color>
+    <color name="colorText2">#2372b7</color>
+    <color name="colorButton">#d8fea92b</color>
+    <color name="colorBackground">#cc88ebef</color>
+    <color name="colorCountDown">#000408</color>
+
+
+</resources>

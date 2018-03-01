@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Vors</string>
+    <string name="start">Start</string>
+    <string name="power_hour">Power Hour</string>
+    <string name="drunkest">Drunkest</string>
+    <string name="questions">Questions</string>
+    <string name="settings">Settings</string>
+    <string name="setup">Setup</string>
+    <string name="allwaysOnDisplay">Allways On Display</string>
+
+
+</resources>
