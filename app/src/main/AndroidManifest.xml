@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".BeforeGame" />
         <activity android:name=".BeforePowerHour" />
-        <activity android:name=".PowerHour"/>
+        <activity android:name=".PowerHour" />
+        <activity android:name=".GameActivity"></activity>
     </application>
 
 </manifest>

@@ -9,12 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
-import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 public class PowerHour extends AppCompatActivity {
@@ -32,7 +30,7 @@ public class PowerHour extends AppCompatActivity {
         if (Globals.allwaysOnDisplay) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
-        shot = MediaPlayer.create(PowerHour.this, R.raw.foghorn);
+        shot = MediaPlayer.create(PowerHour.this, Globals.shotSound);
 
         txtCountDown = (TextView) findViewById(R.id.txtCountDown);
         screen = findViewById(R.id.main_screen);
@@ -58,7 +56,7 @@ public class PowerHour extends AppCompatActivity {
             public void onFinish() {
                 txtCountDown.setText("Drunk yet?");
             }
-            
+
         }.start();
     }
 
@@ -74,6 +72,7 @@ public class PowerHour extends AppCompatActivity {
             countDown = null;
             Intent mainMenuIntent = new Intent(PowerHour.this, MenuActivity.class);
             PowerHour.this.startActivity(mainMenuIntent);
+            finish();
         }
         twice = true;
         showToastMessage("Go to main menu?", 500);

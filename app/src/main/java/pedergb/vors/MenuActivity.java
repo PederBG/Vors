@@ -28,6 +28,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(MenuActivity.this, BeforeGame.class);
+                finish();
                 MenuActivity.this.startActivity(startIntent);
             }
         });
@@ -36,12 +37,33 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(MenuActivity.this, BeforePowerHour.class);
+                finish();
                 MenuActivity.this.startActivity(startIntent);
             }
         });
 
         // ---------------------------------------------
     }
+
+    // ------------------ Handler for back press button ---------------- \\
+    boolean twice;
+    @Override
+    public void onBackPressed() {
+        if (twice){
+            finish();
+            System.exit(0);
+        }
+        twice = true;
+        showToastMessage("Exit?", 500);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                twice = false;
+            }
+        }, 1500);
+    }
+    // ...................................................................... \\
+
     // ---------------- Toast message --------------------- \\
     public void showToastMessage(String text, int duration){
         final Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);

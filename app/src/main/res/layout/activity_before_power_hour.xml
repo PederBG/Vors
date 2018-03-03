@@ -25,11 +25,11 @@
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="34dp"
         android:text="@string/allwaysOnDisplay"
+        android:textColor="@color/colorText2"
         android:layout_below="@+id/setup"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorText2"/>
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button1"
@@ -41,5 +41,84 @@
         android:text="@string/start"
         android:textColor="@color/colorText"
         android:backgroundTint="@color/colorButton"/>
+
+    <TextView
+        android:id="@+id/sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sound"
+        android:textColor="@color/colorTitles"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/cbFogHorn"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:id="@+id/btFogHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/fogHorn"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/cbFogHorn" />
+    <CheckBox
+        android:id="@+id/cbFogHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/setup" />
+
+    <Button
+        android:id="@+id/btAirHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/airHorn"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/btFogHorn"
+        android:layout_toStartOf="@+id/cbAirHorn" />
+    <CheckBox
+        android:id="@+id/cbAirHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btAirHorn"
+        android:layout_alignBottom="@+id/btAirHorn"
+        android:layout_toEndOf="@+id/btFogHorn" />
+
+    <Button
+        android:id="@+id/btDixieHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/dixieHorn"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/btAirHorn"
+        android:layout_toStartOf="@+id/cbDixieHorn" />
+    <CheckBox
+        android:id="@+id/cbDixieHorn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btDixieHorn"
+        android:layout_alignBottom="@+id/btDixieHorn"
+        android:layout_toEndOf="@+id/btFogHorn" />
+
+    <Button
+        android:id="@+id/btCowMoo"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/cowMoo"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/btDixieHorn"
+        android:layout_toStartOf="@+id/cbCowMoo" />
+    <CheckBox
+        android:id="@+id/cbCowMoo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btCowMoo"
+        android:layout_alignBottom="@+id/btCowMoo"
+        android:layout_toEndOf="@+id/btFogHorn" />
+
 
 </RelativeLayout>
