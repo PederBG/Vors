@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button btStart, btPowerHour, btDrunkest, btQuestions, btSettings;
+    Button btStart, btPowerHour, btDrunkest, btQuestions, btExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity {
         btPowerHour = (Button) findViewById(R.id.button2);
         btDrunkest = (Button) findViewById(R.id.button3);
         btQuestions = (Button) findViewById(R.id.button4);
-        btSettings = (Button) findViewById(R.id.button5);
+        btExit = (Button) findViewById(R.id.button5);
 
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +39,23 @@ public class MenuActivity extends AppCompatActivity {
                 Intent startIntent = new Intent(MenuActivity.this, BeforePowerHour.class);
                 finish();
                 MenuActivity.this.startActivity(startIntent);
+            }
+        });
+
+        btQuestions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(MenuActivity.this, QuestionsActivity.class);
+                finish();
+                MenuActivity.this.startActivity(startIntent);
+            }
+        });
+
+        btExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
             }
         });
 

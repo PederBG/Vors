@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pedergb.vors.QuestionsActivity"
+    android:background="@color/colorText2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/questionList">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="300dp"
+        android:background="@color/colorBackground"
+        android:layout_marginTop="40dp"
+        android:id="@+id/addWindow"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:elevation="3dp"
+        android:focusableInTouchMode="false"
+        android:isScrollContainer="false">
+
+        <EditText
+            android:id="@+id/etQuest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_above="@+id/btAdd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="69dp" />
+
+        <Button
+            android:id="@+id/btAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
+            android:text="@string/add"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/etQuest" />
+
+        <Button
+            android:id="@+id/btBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:layout_alignBaseline="@+id/btAdd"
+            android:layout_alignBottom="@+id/btAdd"
+            android:layout_alignEnd="@+id/etQuest" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btAddQuest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/addQuest"
+        android:width="150dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/colorBackgroundDarker"
+        android:elevation="2dp"
+        android:id="@+id/fadeOut">
+    </RelativeLayout>
+
+</RelativeLayout>
