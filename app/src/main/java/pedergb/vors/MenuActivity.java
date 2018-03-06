@@ -17,6 +17,14 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // ------------------------------ APP SETUP ---------------------------- \\
+        if (Globals.getQuestions(this).size() == 0){
+            Globals.setQuestions(this, Globals.defaultQuestions);
+        }
+        Globals.localQuestions = Globals.getQuestions(this);
+        // ------------------------------ --------- ---------------------------- \\
+
+
         // Button handling ----------------------------
         btStart = (Button) findViewById(R.id.button1);
         btPowerHour = (Button) findViewById(R.id.button2);

@@ -97,5 +97,4 @@
         android:textColor="@color/colorText"
         android:backgroundTint="@color/colorButton"/>
 
-
 </RelativeLayout>

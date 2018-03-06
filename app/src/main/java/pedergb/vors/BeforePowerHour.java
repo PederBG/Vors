@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class BeforePowerHour extends AppCompatActivity {
 
     CheckBox allwaysOnDisplay, cbFogHorn, cbAirHorn, cbDixieHorn, cbCowMoo;
     Button btStart, btFogHorn, btAirHorn, btDixieHorn, btCowMoo;
+    ImageButton btBack;
     List<MediaPlayer> mediaPlayers = null;
 
 
@@ -40,6 +42,8 @@ public class BeforePowerHour extends AppCompatActivity {
 
         cbCowMoo = (CheckBox) findViewById(R.id.cbCowMoo);
         btCowMoo = (Button) findViewById(R.id.btCowMoo);
+
+        btBack = (ImageButton) findViewById(R.id.btBack);
 
         final MediaPlayer fogSound = MediaPlayer.create(BeforePowerHour.this, R.raw.foghorn);
         final MediaPlayer airSound = MediaPlayer.create(BeforePowerHour.this, R.raw.airhorn);
@@ -149,6 +153,12 @@ public class BeforePowerHour extends AppCompatActivity {
         });
 
         // ---------------------------------------------
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
     }

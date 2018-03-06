@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class BeforeGame extends AppCompatActivity {
     Button btAdd, btStart;
     EditText name;
     ListView listNames;
+    ImageButton btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class BeforeGame extends AppCompatActivity {
         name = (EditText) findViewById(R.id.editText);
         listNames = (ListView) findViewById(R.id.listNames);
         btStart = (Button) findViewById(R.id.btStart);
+        btBack = (ImageButton) findViewById(R.id.btBack);
 
         final List<String> playerNames = new ArrayList<>();
 
@@ -66,6 +69,13 @@ public class BeforeGame extends AppCompatActivity {
 
                     Globals.playerNames = playerNames;
                 }
+            }
+        });
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

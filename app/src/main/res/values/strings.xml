@@ -14,9 +14,14 @@
     <string name="cowMoo">Cow Moo</string>
     <string name="names">Add player names</string>
     <string name="add">Add</string>
-    <string name="back">Back</string>
+    <string name="close">Close</string>
     <string name="clickme">Tap for question</string>
     <string name="addQuest">Add Question</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="returnTxt">Return</string>
+
+
 
 
 

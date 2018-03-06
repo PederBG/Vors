@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -20,12 +21,15 @@ import static android.R.attr.button;
 
 public class QuestionsActivity extends AppCompatActivity {
 
-    Button btAddQuest, btAdd, btBack;
+    Button btAddQuest, btAdd, btClose, btSave, btDelete, btClose2;
     LinearLayout questLayout;
-    RelativeLayout addWindow, fadeOut;
-    EditText etQuest;
+    RelativeLayout addWindow, editWindow, fadeOut;
+    EditText etQuest, etEditQuest;
+    ImageButton btBack;
 
     ArrayList<Button> questList;
+
+    Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +42,20 @@ public class QuestionsActivity extends AppCompatActivity {
         //---------------------------------------------------------------
         btAddQuest = (Button) findViewById(R.id.btAddQuest);
         btAdd = (Button) findViewById(R.id.btAdd);
-        btBack = (Button) findViewById(R.id.btBack);
+        btClose = (Button) findViewById(R.id.btClose);
+        btSave = (Button) findViewById(R.id.btSave);
+        btDelete = (Button) findViewById(R.id.btDelete);
+        btClose2 = (Button) findViewById(R.id.btClose2);
+        btBack = (ImageButton) findViewById(R.id.btBack);
         addWindow = (RelativeLayout) findViewById(R.id.addWindow);
+        editWindow = (RelativeLayout) findViewById(R.id.editWindow);
         fadeOut = (RelativeLayout) findViewById(R.id.fadeOut);
         etQuest = (EditText) findViewById(R.id.etQuest);
+        etEditQuest = (EditText) findViewById(R.id.etEditQuest);
 
+        ctx = this;
 
+        // ------------------ ADD WINDOW POPUP LOGIC ------------------
         btAddQuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,18 +67,17 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
             }
         });
-
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Globals.questions.add(etQuest.getText().toString());
+                Globals.localQuestions.add(etQuest.getText().toString());
+                Globals.setQuestions(ctx, Globals.localQuestions);
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 etQuest.setText("");
             }
         });
-
-        btBack.setOnClickListener(new View.OnClickListener() {
+        btClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addWindow.setVisibility(View.GONE);
@@ -76,25 +87,78 @@ public class QuestionsActivity extends AppCompatActivity {
                 makeQuestionList();
             }
         });
+        // ------------------ -------------------- ------------------
+
+        // ------------------ EDIT WINDOW POPUP LOGIC ------------------
+        btSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Globals.localQuestions.set(Globals.QUEST_CLICKED, etEditQuest.getText().toString());
+                Globals.setQuestions(ctx, Globals.localQuestions);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                editWindow.setVisibility(View.GONE);
+                fadeOut.setVisibility(View.GONE);
+                btAddQuest.setEnabled(true);
+                questLayout.removeAllViews(); //TODO: ADD SINGLE QUEST INSTEAD OF ADDING ALL AGAIN
+                makeQuestionList();
+            }
+        });
+
+        btDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Globals.localQuestions.remove(Globals.QUEST_CLICKED);
+                Globals.setQuestions(ctx, Globals.localQuestions);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                editWindow.setVisibility(View.GONE);
+                fadeOut.setVisibility(View.GONE);
+                btAddQuest.setEnabled(true);
+                questLayout.removeAllViews(); //TODO: ADD SINGLE QUEST INSTEAD OF ADDING ALL AGAIN
+                makeQuestionList();
+            }
+        });
+
+        btClose2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editWindow.setVisibility(View.GONE);
+                fadeOut.setVisibility(View.GONE);
+                btAddQuest.setEnabled(true);
+                for (Button bt : questList) {
+                    bt.setEnabled(true);
+                }
+            }
+        });
+        // ------------------ -------------------- ------------------
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
+
     private void makeQuestionList() {
         questList = new ArrayList<>();
         questLayout = (LinearLayout) findViewById(R.id.questionList);
 
-        for (int i = 0; i < Globals.questions.size(); i++) {
+
+        for (int i = 0; i < Globals.localQuestions.size(); i++) {
             final int FINAL_NUM = i;
             Button button = new Button(this);
-                /*button.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        1.0f));*/
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT);
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
+            );
             lp.setMargins(10, 5, 10, 5);
             button.setLayoutParams(lp);
             button.setBackgroundColor(Color.parseColor("#cce6eded"));
 
-            button.setText("Question " + (i + 1) + "\n" + "\n" + Globals.questions.get(i) + "\n");
+            button.setText("Question " + (i + 1) + "\n" + "\n" + Globals.localQuestions.get(i) + "\n");
             button.setPadding(0, 20, 0, 0);
 
             questLayout.addView(button);
@@ -102,7 +166,16 @@ public class QuestionsActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showToastMessage(Globals.questions.get(FINAL_NUM), 500);
+                    //showToastMessage(Globals.questions.get(FINAL_NUM), 500);
+                    Globals.QUEST_CLICKED = FINAL_NUM;
+                    editWindow.setVisibility(View.VISIBLE);
+                    fadeOut.setVisibility(View.VISIBLE);
+                    btAddQuest.setEnabled(false);
+                    for (Button bt : questList) {
+                        bt.setEnabled(false);
+                    }
+                    etEditQuest.setText(Globals.localQuestions.get(FINAL_NUM));
+
                 }
             });
         }

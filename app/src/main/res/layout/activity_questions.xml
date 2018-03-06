@@ -10,8 +10,11 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        >
+        android:layout_marginBottom="70dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/scrollView2">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +47,9 @@
             android:inputType="textMultiLine"
             android:layout_above="@+id/btAdd"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="69dp" />
+            android:layout_marginBottom="69dp"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"/>
 
         <Button
             android:id="@+id/btAdd"
@@ -53,16 +58,78 @@
             android:layout_marginBottom="68dp"
             android:text="@string/add"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/etQuest" />
+            android:layout_alignStart="@+id/etQuest"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"/>
 
         <Button
-            android:id="@+id/btBack"
+            android:id="@+id/btClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back"
+            android:text="@string/returnTxt"
             android:layout_alignBaseline="@+id/btAdd"
             android:layout_alignBottom="@+id/btAdd"
-            android:layout_alignEnd="@+id/etQuest" />
+            android:layout_alignEnd="@+id/etQuest"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="300dp"
+        android:background="@color/colorBackground"
+        android:layout_marginTop="40dp"
+        android:id="@+id/editWindow"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:elevation="3dp"
+        android:focusableInTouchMode="false"
+        android:isScrollContainer="false">
+
+        <EditText
+            android:id="@+id/etEditQuest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_above="@+id/btSave"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="69dp" />
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="68dp"
+            android:text="@string/save"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/etEditQuest" />
+
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"
+            android:layout_below="@+id/etEditQuest"
+            android:layout_alignEnd="@+id/etEditQuest" />
+
+        <Button
+            android:id="@+id/btClose2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/returnTxt"
+            android:backgroundTint="@color/colorButton"
+            android:textColor="@color/colorText"
+            android:layout_below="@+id/btDelete"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
@@ -70,11 +137,13 @@
         android:id="@+id/btAddQuest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:text="@string/addQuest"
         android:width="150dp"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorText"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -83,5 +152,16 @@
         android:elevation="2dp"
         android:id="@+id/fadeOut">
     </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back_orange"
+        android:background="@null"
+        android:layout_alignTop="@+id/btAddQuest"
+        android:layout_alignStart="@+id/scrollView2"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

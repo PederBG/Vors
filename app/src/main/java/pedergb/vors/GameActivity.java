@@ -22,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
     View background;
     TextView txtQuestions;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +34,8 @@ public class GameActivity extends AppCompatActivity {
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nextQuestion = Globals.questions.get(
-                        new Random().nextInt(Globals.questions.size()));
+                String nextQuestion = Globals.localQuestions.get(
+                        new Random().nextInt(Globals.localQuestions.size()));
                 txtQuestions.setText(parseQuestion(nextQuestion));
                 background.setBackgroundColor(colors.get(new Random().nextInt(colors.size())));
             }

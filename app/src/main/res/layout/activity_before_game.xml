@@ -59,8 +59,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
         android:text="@string/start"
-        android:textColor="@color/colorText2"
-        android:backgroundTint="@color/colorButton"/>
+        android:textColor="@color/colorText"
+        android:backgroundTint="@color/colorButton"
+        android:width="120dp"/>
 
+    <ImageButton
+        android:id="@+id/btBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/back"
+        android:background="@null"
+        android:alpha="0.6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>
