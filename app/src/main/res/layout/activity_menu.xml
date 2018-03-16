@@ -42,32 +42,32 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="58dp"
         android:text="@string/start"
         android:textColor="@color/colorText"
         android:backgroundTint="@color/colorButton"
+        android:layout_marginTop="19dp"
         android:layout_below="@+id/imageView2"
         android:layout_alignStart="@+id/button2" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="58dp"
         android:layout_marginTop="17dp"
-        android:text="@string/power_hour"
+        android:text="@string/questions"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorText"
         android:backgroundTint="@color/colorButton"/>
 
-
     <Button
         android:id="@+id/button3"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="58dp"
         android:layout_marginTop="17dp"
-        android:text="@string/drunkest"
+        android:text="@string/power_hour"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorText"
@@ -76,25 +76,25 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="58dp"
         android:layout_marginTop="17dp"
-        android:text="@string/questions"
+        android:text="@string/settings"
         android:layout_below="@+id/button3"
         android:layout_centerHorizontal="true"
         android:textColor="@color/colorText"
         android:backgroundTint="@color/colorButton"/>
 
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="175dp"
+    <ImageButton
+        android:id="@+id/btBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="@string/lastBt"
-        android:layout_below="@+id/button4"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorText"
-        android:backgroundTint="@color/colorButton"/>
+        app:srcCompat="@drawable/back"
+        android:background="@null"
+        android:alpha="0.6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>

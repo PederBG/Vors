@@ -6,11 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button btStart, btPowerHour, btDrunkest, btQuestions, btExit;
+    Button btStart, btPowerHour, btQuestions, btSettings;
+    ImageButton btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +22,22 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         // ------------------------------ APP SETUP ---------------------------- \\
-        if (Globals.getQuestions(this).size() == 0){
-            Globals.setQuestions(this, Globals.defaultQuestions);
+        if (Globals.getQuestions(this).size() == 1 && Globals.activeQuest < 3){
+            // Will always have one question since first will then be "NOT FOUND"
+            Globals.setQuestions(this, Globals.DEFAULT_TEMPLATES[Globals.activeQuest]);
         }
-        Globals.localQuestions = Globals.getQuestions(this);
+        Globals.LOCAL_TEMPLATES[Globals.activeQuest] = Globals.getQuestions(this);
+
         // ------------------------------ --------- ---------------------------- \\
 
 
         // Button handling ----------------------------
         btStart = (Button) findViewById(R.id.button1);
-        btPowerHour = (Button) findViewById(R.id.button2);
-        btDrunkest = (Button) findViewById(R.id.button3);
-        btQuestions = (Button) findViewById(R.id.button4);
-        btExit = (Button) findViewById(R.id.button5);
+        btQuestions = (Button) findViewById(R.id.button2);
+        btPowerHour = (Button) findViewById(R.id.button3);
+        btSettings = (Button) findViewById(R.id.button4);
+        btBack = (ImageButton) findViewById(R.id.btBack);
+
 
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,35 +48,41 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        btPowerHour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(MenuActivity.this, BeforePowerHour.class);
-                finish();
-                MenuActivity.this.startActivity(startIntent);
-            }
-        });
-
         btQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(MenuActivity.this, QuestionsActivity.class);
+                Intent powerhourIntent = new Intent(MenuActivity.this, QuestionsActivity.class);
                 finish();
-                MenuActivity.this.startActivity(startIntent);
+                MenuActivity.this.startActivity(powerhourIntent);
             }
         });
 
-        btExit.setOnClickListener(new View.OnClickListener() {
+        btPowerHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent questIntent = new Intent(MenuActivity.this, BeforePowerHour.class);
                 finish();
-                System.exit(0);
+                MenuActivity.this.startActivity(questIntent);
+            }
+        });
+
+        btSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(MenuActivity.this, SettingsActivity.class);
+                finish();
+                MenuActivity.this.startActivity(settingsIntent);
             }
         });
 
         // ---------------------------------------------
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
-
     // ------------------ Handler for back press button ---------------- \\
     boolean twice;
     @Override

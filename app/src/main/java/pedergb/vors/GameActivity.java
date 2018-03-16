@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
 
     View background;
     TextView txtQuestions;
+    ImageButton btBack;
 
 
     @Override
@@ -30,14 +32,22 @@ public class GameActivity extends AppCompatActivity {
 
         background = findViewById(R.id.gameView);
         txtQuestions = (TextView) findViewById(R.id.txtQuestion);
+        btBack = (ImageButton) findViewById(R.id.btBack);
 
         background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nextQuestion = Globals.localQuestions.get(
-                        new Random().nextInt(Globals.localQuestions.size()));
+                String nextQuestion = ((ArrayList<String>) Globals.LOCAL_TEMPLATES[Globals.activeQuest]).get(
+                        new Random().nextInt(((ArrayList<String>) Globals.LOCAL_TEMPLATES[Globals.activeQuest]).size()));
                 txtQuestions.setText(parseQuestion(nextQuestion));
                 background.setBackgroundColor(colors.get(new Random().nextInt(colors.size())));
+            }
+        });
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

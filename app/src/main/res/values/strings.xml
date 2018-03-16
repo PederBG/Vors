@@ -2,9 +2,8 @@
     <string name="app_name">Vors</string>
     <string name="start">Start</string>
     <string name="power_hour">Power Hour</string>
-    <string name="drunkest">Drunkest</string>
     <string name="questions">Questions</string>
-    <string name="lastBt">Exit</string>
+    <string name="settings">Settings</string>
     <string name="setup">Setup</string>
     <string name="allwaysOnDisplay">Allways On Display</string>
     <string name="sound">Sounds</string>
@@ -20,6 +19,17 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="returnTxt">Return</string>
+    <string name="norwegian">Norwegian</string>
+    <string name="english">English</string>
+    <string name="custom">Custom</string>
+    <string name="ntnu">NTNU</string>
+    <string name="language">Question Version</string>
+    <string name="info">User guide</string>
+    <string name="infoText">Here you can manage what questions that will be picked randomly in the game.
+         All edits will be saved and available for later use.\nBy changing the Question Version at
+        Settings you can have a different question pool for different occasions.\nTo make the game pick
+         a random name from the participants pool, use three repeated hashes (Example: ### must drink = James must
+        drink).\nHave fun!</string>
 
 
 

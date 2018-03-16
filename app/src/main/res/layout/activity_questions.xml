@@ -30,14 +30,14 @@
         android:layout_marginRight="30dp"
         android:layout_height="300dp"
         android:background="@color/colorBackground"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="31dp"
         android:id="@+id/addWindow"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:visibility="gone"
         android:elevation="3dp"
         android:focusableInTouchMode="false"
-        android:isScrollContainer="false">
+        android:isScrollContainer="false"
+        android:layout_alignTop="@+id/scrollView2"
+        android:layout_centerHorizontal="true">
 
         <EditText
             android:id="@+id/etQuest"
@@ -45,33 +45,34 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textMultiLine"
-            android:layout_above="@+id/btAdd"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="69dp"
+            android:layout_marginBottom="21dp"
             android:backgroundTint="@color/colorButton"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorText"
+            android:layout_above="@+id/btAdd"
+            android:layout_centerHorizontal="true" />
 
         <Button
             android:id="@+id/btAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="32dp"
             android:text="@string/add"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/etQuest"
             android:backgroundTint="@color/colorButton"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorText"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/returnTxt"
-            android:layout_alignBaseline="@+id/btAdd"
-            android:layout_alignBottom="@+id/btAdd"
-            android:layout_alignEnd="@+id/etQuest"
-            android:backgroundTint="@color/colorButton"
-            android:textColor="@color/colorText"/>
+            app:srcCompat="@drawable/close"
+            android:background="@null"
+            android:alpha="0.6"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"/>
 
     </RelativeLayout>
 
@@ -98,13 +99,13 @@
             android:inputType="textMultiLine"
             android:layout_above="@+id/btSave"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="69dp" />
+            android:layout_marginBottom="40dp" />
 
         <Button
             android:id="@+id/btSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="55dp"
             android:text="@string/save"
             android:backgroundTint="@color/colorButton"
             android:textColor="@color/colorText"
@@ -121,15 +122,79 @@
             android:layout_below="@+id/etEditQuest"
             android:layout_alignEnd="@+id/etEditQuest" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btClose2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/returnTxt"
-            android:backgroundTint="@color/colorButton"
-            android:textColor="@color/colorText"
-            android:layout_below="@+id/btDelete"
-            android:layout_centerHorizontal="true" />
+            app:srcCompat="@drawable/close"
+            android:background="@null"
+            android:alpha="0.6"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_height="435dp"
+        android:background="@color/colorBackground"
+        android:layout_marginTop="40dp"
+        android:id="@+id/infoWindow"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:elevation="3dp"
+        android:focusableInTouchMode="false"
+        android:isScrollContainer="false"
+        >
+
+
+        <TextView
+            android:id="@+id/txtInfoHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:fontFamily="casual"
+            android:text="@string/info"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTitles"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtInfoBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtInfoHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:width="260dp"
+            android:fontFamily="casual"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/infoText"
+            android:textColor="@color/colorCountDown"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/btClose3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/close"
+            android:background="@null"
+            android:alpha="0.6"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"/>
+
 
     </RelativeLayout>
 
@@ -163,5 +228,18 @@
         android:layout_alignStart="@+id/scrollView2"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp" />
+
+    <ImageButton
+        android:id="@+id/btInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/info_orange"
+        android:background="@null"
+        android:layout_alignTop="@+id/btAddQuest"
+        android:layout_alignEnd="@+id/scrollView2"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="3dp"
+        />
 
 </RelativeLayout>
